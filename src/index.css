@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-black text-zinc-100;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-700;
+  }
+}
+
+/* Tactical UI Animations */
+@layer utilities {
+  /* Shimmer effect for Ghost Slate empty states */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Tactical pulse for active indicators */
+  @keyframes tactical-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-tactical-pulse {
+    animation: tactical-pulse 2s ease-in-out infinite;
+  }
+
+  /* Smooth zoom-in animation */
+  .animate-in {
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: both;
+  }
+
+  .zoom-in-75 {
+    animation-name: zoom-in-75;
+  }
+
+  .zoom-in-95 {
+    animation-name: zoom-in-95;
+  }
+
+  @keyframes zoom-in-75 {
+    from {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes zoom-in-95 {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Titan scale typography for workout numbers */
+  .text-titan {
+    @apply text-5xl font-black tracking-tighter tabular-nums;
+  }
+
+  /* Editorial sub-headers */
+  .text-editorial {
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500;
+  }
+}
